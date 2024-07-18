@@ -10,7 +10,8 @@ public class Indeterminismo extends Thread {
 			cont++;
 		}
 	}
-	
+	//El indeterminismo se evita con la exclusion mutua (solamente puede acceder a la variable)
+	//Seccion critica: Aquella parte del codigo donde se va a producir indeterminismo
 	public static void main(String[] args)
 	{
 		Indeterminismo[] vec = new Indeterminismo[1000];
@@ -29,6 +30,16 @@ public class Indeterminismo extends Thread {
 			}
 		}catch(Exception ex) {}
 		System.out.println(cont);
+		
+		for(int i = 0;i<=1000000;i++)
+		{
+			if (i == 1000000)
+				System.out.println(cont);
+				
+		}
+	
 	}
+	
+	
 
 }
